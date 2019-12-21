@@ -15,7 +15,7 @@ from spent import *
 from tabulate import tabulate
 
 args = docopt(usage)
-print(args)
+#print(args)
 
 if args['init']:
     init()

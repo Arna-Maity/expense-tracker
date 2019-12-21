@@ -38,9 +38,12 @@ $ spent init
 
 Logging an expense:
 ```sh
-$ spent <amount> <category> [<message>]
+$ spent <amount> <category> [<profile>] [<message>]
 ```
 `message` is optional.
+`profile` is optional.
+
+If profile is not specified the default user profile is "home".
 
 For example,
 ```sh
@@ -48,32 +51,39 @@ $ spent 50 food "snacks in the evening"
 $ spent 100 transport
 ```
 
-Viewing your expenditure:
+Viewing your expenditure for all profiles:
 ```sh
-spent_driver.py view [<view_category>]
+spent_driver.py view
 ```
 For example,
 ```sh
-$ spent view
-$ spent view food
+$ spent_driver.py view
 ```
 
 The first command shows you your total expenditure, along with a list of all transactions you've made.
 
-The second one is more streamlined, and gives you the details for the sepecified category.
+Viewing your expenditure for a particular user profile:
+```sh
+$ spent_driver.py view <user_profile> <category>
+```
+For example,
+```sh
+$ spent_driver.py view work transport
+```
+The second one is more streamlined, and gives you the details for the specified user profile and category.
 
 *An example output*
 ```sh
-$ spent view
-Total expense: 5200
-----  ---------  ----------------------  --------------------------
- 100  food       None                    2018-12-02 15:41:17.823609
- 200  cinema     None                    2018-12-02 15:41:22.958207
- 300  taxi       None                    2018-12-02 15:41:28.565593
- 100  groceries  having friends over     2018-12-02 15:42:40.332875
-1500  travel     air tickets to go home  2018-12-02 15:43:10.711194
-3000  rent       security deposit        2018-12-02 15:44:28.739984
-----  ---------  ----------------------  --------------------------
+$ spent_driver.py view
+Total expense:  5200
+----  ----  ---------  ----------------------  --------------------------
+work   100  food                               2019-12-21 06:51:22.323043
+home   200  cinema                             2019-12-21 06:51:41.695574
+work   300  taxi                               2019-12-21 06:52:04.985462
+home   100  groceries                          2019-12-21 06:52:18.811124
+work  1500  travel     air tickets to go home  2019-12-21 06:53:04.812908
+home  3000  rent       security deposit        2019-12-21 06:53:46.783464
+----  ----  ---------  ----------------------  --------------------------
 ```
 
 # Contributions
