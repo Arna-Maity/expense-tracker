@@ -1,21 +1,21 @@
-#spent_driver.py use [<profile_name>]
+# spent_driver.py use [<profile_name>]
+from tabulate import tabulate
+from spent import *
+from docopt import docopt
 usage = '''
 
 Expense Tracker CLI.
 
 Usage:
   spent_driver.py init
-  spent_driver.py view [<view_profile>] [<view_category>] 
-  spent_driver.py <amount> <category> [<profile_name>] [<message>] 
+  spent_driver.py view [<view_profile>] [<view_category>]
+  spent_driver.py <amount> <category> [<profile_name>] [<message>]
 
 '''
 
-from docopt import docopt
-from spent import *
-from tabulate import tabulate
 
 args = docopt(usage)
-#print(args)
+# print(args)
 
 if args['init']:
     init()
@@ -36,10 +36,12 @@ if args['<amount>']:
     try:
         amount = float(args['<amount>'])
         if(args['<profile_name>']):
-            log(amount, args['<category>'],args['<message>'],args['<profile_name>'])
+            log(amount,
+                args['<category>'],
+                args['<message>'],
+                args['<profile_name>'])
         else:
-            log(amount, args['<category>'],args['<message>'])
+            log(amount, args['<category>'], args['<message>'])
 
-
-    except:
+    except BaseException:
         print(usage)
