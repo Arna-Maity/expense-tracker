@@ -1,3 +1,6 @@
+from tabulate import tabulate
+from spent import *
+from docopt import docopt
 usage = '''
 
 Expense Tracker CLI.
@@ -9,9 +12,6 @@ Usage:
 
 '''
 
-from docopt import docopt
-from spent import *
-from tabulate import tabulate
 
 args = docopt(usage)
 
@@ -29,5 +29,5 @@ if args['<amount>']:
     try:
         amount = float(args['<amount>'])
         log(amount, args['<category>'], args['<message>'])
-    except:
+    except BaseException:
         print(usage)

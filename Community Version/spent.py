@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import datetime
 
+
 def init():
     '''
     Initialize a new database to store the
@@ -20,6 +21,7 @@ def init():
     conn.commit()
     conn.close()
 
+
 def log(amount, category, message=''):
     '''
     logs the expenditure in the database.
@@ -35,6 +37,7 @@ def log(amount, category, message=''):
     c.execute(sql, data)
     conn.commit()
     conn.close()
+
 
 def view(category=None):
     '''
